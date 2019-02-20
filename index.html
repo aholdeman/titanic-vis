@@ -2,30 +2,42 @@
 index.html
 HTML page for project
 -->
+
 <!doctype html>
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="">
-    <title>Titanic Passengers Breakdown</title>
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Custom styling -->
-    <link rel="stylesheet" href="css/style.css">
+    <meta content="" name="description">
+    <title>Titanic Passengers Visualization</title>
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://d3js.org/d3.v3.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
 </head>
-
 <body>
-<!-- Bootstrap grid setup -->
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div id="chart-area"></div>
+        <div class="col-lg-6">
+            <h1 style="text-align: center; padding-top: 30px;">Welcome!</h1>
+            <div class="text-chunk">
+                <p>This is a zoomable Sunburst visualization, depicting a breakdown of passengers on the Titanic,
+                    divided by
+                    their class, gender, and if they survived or died in the shipwreck</p>
+                <p> To interact with the graph, click on one of the sections. <br/> By hovering over a section, you can
+                    see the size and percentage of the total.</p>
+                <p>To zoom, click on a section of the graph. The new relative percentages will show, as well as the
+                    percentage of the total.</p>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="chart" id="chart-area"></div>
+        </div>
     </div>
-</div>
-
-<!-- External JS libraries -->
-<script src="js/d3.min.js"></script>
+</body>
 <!-- Custom JS -->
 <script src="js/main.js"></script>
-
-</body>
 </html>
