@@ -17,6 +17,16 @@ const div = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
+
+var categors = ["Passengers", "1st Class", "2nd Class", "3rd Class", "Male", "Female", "died", "survived"]
+var practicecolor = d3.scale.ordinal()
+    .domain(categors)
+    .range(["#1a9850", "#66bd63", "#a6d96a","#d9ef8b","#ffffbf","#fee08b","#fdae61","#f46d43"]);
+
+var color = d3.scale.ordinal() // D3 Version 4
+    .domain(["Passengers", "1st Class", "2nd Class", "3rd Class", "Male", "Female", "died", "survived"])
+    .range(["#E74C3C", "#E67E22", "#F1C40F", "#27AE60", "#3498DB", "#8E44AD", "#FF33FC", "#76D7C4"]);
+
 // format percentages
 const formatNum = d3.format(",.2%");
 
@@ -62,9 +72,12 @@ d3.json("data/titanic-passengers.json", function (data) {
     // adds text and formatting and such to the circle graph
     const path = graph.append("path")
         .attr("d", arc)
-        .style("fill", function (d) {
-            return d.color;
-        })
+
+        .style("fill", function(d) { return practicecolor(d.name); })
+        /*
+        .style("fill", function (d, i) {
+            return legendVals1(i)})
+            */
         .style("stroke", "#000")
         .style("stroke-width", "2px")
         .on("click", zoom) //zoom function updates the graph
@@ -148,4 +161,62 @@ d3.json("data/titanic-passengers.json", function (data) {
         };
 
     }
+
 });
+
+/*
+const nah = d3.select("#legend")
+    .append("svg")
+    .attr("width", 500)
+    .attr("height", 500)
+    .append("g")
+
+var legend = nah.append("g")
+
+categors.forEach(function(continent, i){
+    var legendRow = legend.append("g")
+        .attr("transform", "translate(0, " + (i*20) + ")");
+    legendRow.append("rect")
+        .attr("width", 10)
+        .attr("height", 10)
+        .style("fill", function (d) {
+            return data.color;
+        });
+
+    legendRow.append("text")
+        .attr("x", 20)
+        .attr("y", 10)
+        .attr("text-anchor", "start")
+        .style("text-transform", "capitalize")
+        .text(continent);
+})
+*/
+const nah = d3.select("#legend")
+    .append("svg")
+    .attr("width", 500)
+    .attr("height", 500)
+    .append("g")
+
+var legend = nah.append("g")
+    .selectAll("g")
+    .data(practicecolor.domain())
+    .enter()
+    .append('g')
+    .attr('class', 'legend')
+    .attr('transform', function(d, i) {
+        var height = 20;
+        var x = 0;
+        var y = i * height;
+        return 'translate(' + x + ',' + y + ')';
+    });
+
+legend.append('rect')
+    .attr('width', 10)
+    .attr('height', 10)
+    .style('fill', practicecolor)
+    .style('stroke', practicecolor);
+
+legend.append('text')
+    .attr('x', 20)
+    .attr('y', 12)
+    .text(function(d) { return d; });
