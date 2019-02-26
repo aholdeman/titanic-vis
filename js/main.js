@@ -21,11 +21,7 @@ const div = d3.select("body").append("div")
 var categors = ["Passengers", "1st Class", "2nd Class", "3rd Class", "Male", "Female", "died", "survived"]
 var practicecolor = d3.scale.ordinal()
     .domain(categors)
-    .range(["#1a9850", "#66bd63", "#a6d96a","#d9ef8b","#ffffbf","#fee08b","#fdae61","#f46d43"]);
-
-var color = d3.scale.ordinal() // D3 Version 4
-    .domain(["Passengers", "1st Class", "2nd Class", "3rd Class", "Male", "Female", "died", "survived"])
-    .range(["#E74C3C", "#E67E22", "#F1C40F", "#27AE60", "#3498DB", "#8E44AD", "#FF33FC", "#76D7C4"]);
+    .range(["#004777", "#A30000", "#FF7700", "#81C14B", "#ECBA82", "#7C9885", "#FF33FC", "#76D7C4"]);
 
 // format percentages
 const formatNum = d3.format(",.2%");
@@ -72,12 +68,7 @@ d3.json("data/titanic-passengers.json", function (data) {
     // adds text and formatting and such to the circle graph
     const path = graph.append("path")
         .attr("d", arc)
-
         .style("fill", function(d) { return practicecolor(d.name); })
-        /*
-        .style("fill", function (d, i) {
-            return legendVals1(i)})
-            */
         .style("stroke", "#000")
         .style("stroke-width", "2px")
         .on("click", zoom) //zoom function updates the graph
@@ -95,25 +86,10 @@ d3.json("data/titanic-passengers.json", function (data) {
                 .style("opacity", 0);
         })
 
-    // add labels for each chunk of the graph
-    // TODO: update so it doesn't display if it doesn't fit
-    const text = graph.append("text")
-        .attr("transform", function (d) {
-            return "translate(" + arc.centroid(d) + ")";
-        })
-        .attr("text-anchor", "middle")
-        .attr("dy", ".35em")
-        .text(function (d) {
-            return d.name;
-        })
-        .style("font-size", "16px")
-
-
     // zoom in on the section the user clicks on
     function zoom(d) {
         totalSize = parseInt(d.size); // the new size of the middle piece
         console.log(totalSize);
-        text.transition().attr("opacity", 0); // remove the text while it moves
         // zoom in and see new subsection of graph
         path.transition()
             .duration(750)
@@ -161,36 +137,40 @@ d3.json("data/titanic-passengers.json", function (data) {
         };
 
     }
+    /*
+    const nah = d3.select("#legend")
+        .append("svg")
+        .attr("width", 500)
+        .attr("height", 500)
+        .append("g")
 
-});
-
-/*
-const nah = d3.select("#legend")
-    .append("svg")
-    .attr("width", 500)
-    .attr("height", 500)
-    .append("g")
-
-var legend = nah.append("g")
-
-categors.forEach(function(continent, i){
-    var legendRow = legend.append("g")
-        .attr("transform", "translate(0, " + (i*20) + ")");
-    legendRow.append("rect")
-        .attr("width", 10)
-        .attr("height", 10)
-        .style("fill", function (d) {
-            return data.color;
+    var legend = nah.append("g")
+        .selectAll("g")
+        .data(partition.nodes(data))
+        .enter()
+        .append('g')
+        .attr('class', 'legend')
+        .attr('transform', function(d, i) {
+            var height = 20;
+            var x = 0;
+            var y = i * height;
+            return 'translate(' + x + ',' + y + ')';
         });
 
-    legendRow.append("text")
-        .attr("x", 20)
-        .attr("y", 10)
-        .attr("text-anchor", "start")
-        .style("text-transform", "capitalize")
-        .text(continent);
-})
-*/
+    legend.append('rect')
+        .attr('width', 10)
+        .attr('height', 10)
+        .style("fill", function(d) { return d.color; });
+
+
+    legend.append('text')
+        .attr('x', 20)
+        .attr('y', 12)
+        .text(function(d) { return d.name; });
+        */
+});
+
+
 const nah = d3.select("#legend")
     .append("svg")
     .attr("width", 500)

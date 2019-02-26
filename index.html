@@ -21,7 +21,6 @@ HTML page for project
 <body>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-6">
             <h1 style="text-align: center; padding-top: 30px;">Welcome!</h1>
             <div class="text-chunk">
                 <p>This is a zoomable Sunburst visualization, depicting a breakdown of passengers on the Titanic,
@@ -31,10 +30,13 @@ HTML page for project
                     see the size and percentage of the total.</p>
                 <p>To zoom, click on a section of the graph. The new relative percentages will show, as well as the
                     percentage of the total.</p>
-                <div id="legend"></div>
             </div>
-        </div>
-        <div class="col-lg-6">
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+                <div id="legend"><h3 align="justify">Legend:</h3></div>
+            </div>
+        <div class="col-lg-8">
             <div class="chart" id="chart-area"></div>
         </div>
     </div>
