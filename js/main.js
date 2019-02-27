@@ -21,7 +21,7 @@ const div = d3.select("body").append("div")
 var categors = ["Passengers", "1st Class", "2nd Class", "3rd Class", "Male", "Female", "died", "survived"]
 var practicecolor = d3.scale.ordinal()
     .domain(categors)
-    .range(["#004777", "#A30000", "#FF7700", "#81C14B", "#ECBA82", "#7C9885", "#FF33FC", "#76D7C4"]);
+    .range(["#ffffe5", "#003EE5", "#BBFFFF", "#00BFFF", "#32BF00", "#BAE314", "#FFF614", "#fec44f"]);
 
 // format percentages
 const formatNum = d3.format(",.2%");
@@ -194,7 +194,7 @@ legend.append('rect')
     .attr('width', 10)
     .attr('height', 10)
     .style('fill', practicecolor)
-    .style('stroke', practicecolor);
+    .style('stroke', "black");
 
 legend.append('text')
     .attr('x', 20)
