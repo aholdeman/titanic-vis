@@ -18,10 +18,10 @@ const div = d3.select("body").append("div")
     .style("opacity", 0);
 
 
-var categors = ["Passengers", "1st Class", "2nd Class", "3rd Class", "Male", "Female", "died", "survived"]
+var categors = ["All Passengers", "1st Class", "2nd Class", "3rd Class", "Male", "Female", "died", "survived"]
 var practicecolor = d3.scale.ordinal()
     .domain(categors)
-    .range(["#ffffe5", "#003EE5", "#BBFFFF", "#00BFFF", "#32BF00", "#BAE314", "#FFF614", "#fec44f"]);
+    .range(["#ffffe5", "#003EE5", "#bbffff", "#00BFFF", "#3cb371", "#BAE314", "#FFF614", "#fec44f"]);
 
 // format percentages
 const formatNum = d3.format(",.2%");
@@ -184,9 +184,9 @@ var legend = nah.append("g")
     .append('g')
     .attr('class', 'legend')
     .attr('transform', function(d, i) {
-        var height = 20;
-        var x = 0;
-        var y = i * height;
+        var height = 15;
+        var x = 235;
+        var y = i * height+200;
         return 'translate(' + x + ',' + y + ')';
     });
 
@@ -199,4 +199,5 @@ legend.append('rect')
 legend.append('text')
     .attr('x', 20)
     .attr('y', 12)
+
     .text(function(d) { return d; });
