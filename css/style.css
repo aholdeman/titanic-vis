@@ -15,5 +15,18 @@ div.tooltip {
 
 .text-chunk {
     text-align: center;
-    padding-top: 70px;
+}
+
+#gif {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#buttons {
+    text-align: center;
+}
+
+#total {
+    text-align: center;
 }

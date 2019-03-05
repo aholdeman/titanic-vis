@@ -19,6 +19,8 @@ HTML page for project
 
 </head>
 <body>
+<a href="index.html"><button>Back</button></a>
+
 <div class="container-fluid">
     <div class="row">
             <h1 style="text-align: center; padding-top: 30px;">Welcome!</h1>
@@ -30,15 +32,23 @@ HTML page for project
                     see the size and percentage of the total.</p>
                 <p>To zoom, click on a section of the graph. The new relative percentages will show, as well as the
                     percentage of the total.</p>
+                <p>To view the total count of each category, press the button below. </p>
+                <button onclick="viewTotals()">View Totals</button>
             </div>
     </div>
     <div class="row">
         <div class="col-lg-3">
                 <div id="legend"></div>
             </div>
-        <div class="col-lg-9">
+        <div class="col-lg-6">
             <div class="chart" id="chart-area"></div>
         </div>
+        <div class="col-lg-3">
+            <div id="total"></div>
+        </div>
+    </div>
+    <div class="row">
+
     </div>
 </body>
 <!-- Custom JS -->

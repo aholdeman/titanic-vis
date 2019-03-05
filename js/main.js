@@ -17,9 +17,8 @@ const div = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
-
-var categors = ["All Passengers", "1st Class", "2nd Class", "3rd Class", "Male", "Female", "died", "survived"]
-var practicecolor = d3.scale.ordinal()
+const categors = ["All Passengers", "1st Class", "2nd Class", "3rd Class", "Male", "Female", "died", "survived"]
+const practicecolor = d3.scale.ordinal()
     .domain(categors)
     .range(["#ffffe5", "#003EE5", "#bbffff", "#00BFFF", "#3cb371", "#BAE314", "#FFF614", "#fec44f"]);
 
@@ -137,37 +136,6 @@ d3.json("data/titanic-passengers.json", function (data) {
         };
 
     }
-    /*
-    const nah = d3.select("#legend")
-        .append("svg")
-        .attr("width", 500)
-        .attr("height", 500)
-        .append("g")
-
-    var legend = nah.append("g")
-        .selectAll("g")
-        .data(partition.nodes(data))
-        .enter()
-        .append('g')
-        .attr('class', 'legend')
-        .attr('transform', function(d, i) {
-            var height = 20;
-            var x = 0;
-            var y = i * height;
-            return 'translate(' + x + ',' + y + ')';
-        });
-
-    legend.append('rect')
-        .attr('width', 10)
-        .attr('height', 10)
-        .style("fill", function(d) { return d.color; });
-
-
-    legend.append('text')
-        .attr('x', 20)
-        .attr('y', 12)
-        .text(function(d) { return d.name; });
-        */
 });
 
 
@@ -199,5 +167,55 @@ legend.append('rect')
 legend.append('text')
     .attr('x', 20)
     .attr('y', 12)
-
     .text(function(d) { return d; });
+
+
+
+const all = d3.select("#total")
+    .append("svg")
+    .attr("width", 500)
+    .attr("height", 500)
+    .append("g")
+
+function viewTotals(){
+    var total = ["All Passengers - 891", "1st Class - 216", "2nd Class - 184", "Third Class - 491",  "Male - 577", "Female - 314",  "Died - 549", "Survived - 342"]
+    const allpassengers = d3.scale.ordinal()
+        .domain(total)
+        .range(["#ffffe5", "#003EE5", "#bbffff", "#00BFFF", "#3cb371", "#BAE314", "#FFF614", "#fec44f"]);
+
+
+    all.append("text")
+        .text("Totals")
+        .attr('x', 75)
+        .attr('y', 175)
+        .style('text-anchor', 'middle')
+        .style('fill', 'red')
+        .style('font-size', '20px')
+        .style('font-family', 'sans-serif')
+
+    var totals = all.append("g")
+        .selectAll("g")
+        .data(allpassengers.domain())
+        .enter()
+        .append('g')
+        .attr('class', 'legend')
+        .attr('transform', function(d, i) {
+            var height = 15;
+            var x = 10;
+            var y = i * height+200;
+            return 'translate(' + x + ',' + y + ')';
+        });
+
+    totals.append('rect')
+        .attr('width', 10)
+        .attr('height', 10)
+        .style('fill', allpassengers)
+        .style('stroke', "black");
+
+    totals.append('text')
+        .attr('x', 20)
+        .attr('y', 12)
+        .text(function(d) { return d; })
+        .style('font-family', 'sans-serif');
+
+}

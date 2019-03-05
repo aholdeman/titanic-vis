@@ -3,13 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://d3js.org/d3.v3.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+
 </head>
 <body>
-<img src="https://66.media.tumblr.com/bf5b74f59a67998d8a8ed1578b3052e4/tumblr_o9k3g1mSps1qzft56o1_r1_400.gif">
-<video controls autoplay>
-<source src="https://www.youtube.com/watch?v=G44xTr8D_bw" type="video/mp4">
-</video>
-<h1>In 1892, 491 souls perished in the tragic sinking of the Titanic.</h1>
-<a href="visualization.html"><button>View Visualization</button></a>
+<img id="gif" src="https://66.media.tumblr.com/bf5b74f59a67998d8a8ed1578b3052e4/tumblr_o9k3g1mSps1qzft56o1_r1_400.gif">
+<h1>The Titanic was a ship. It sailed somewhere. It hit an iceberg. We made a visualization to show the breakdown of who died. To see visualization, select "View Visualization"</h1>
+<div id="buttons">
+    <a href="visualization.html"><button>View Visualization</button></a>
+</div>
+<div id="total"></div>
+
+<script src="js/main.js"></script>
+
 </body>
 </html>
