@@ -3,22 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="http://d3js.org/d3.v3.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <link href="css/style.css" rel="stylesheet">
 
 </head>
-<body>
-<img id="gif" src="https://66.media.tumblr.com/bf5b74f59a67998d8a8ed1578b3052e4/tumblr_o9k3g1mSps1qzft56o1_r1_400.gif">
-<h1>The Titanic was a ship. It sailed somewhere. It hit an iceberg. We made a visualization to show the breakdown of who died. To see visualization, select "View Visualization"</h1>
-<div id="buttons">
-    <a href="visualization.html"><button>View Visualization</button></a>
-</div>
-<div id="total"></div>
+<body class = "home">
+    <img id="gif" src="https://66.media.tumblr.com/bf5b74f59a67998d8a8ed1578b3052e4/tumblr_o9k3g1mSps1qzft56o1_r1_400.gif" width=" 900" height=" 400" >
+    <div class="boxed">
+        <h2><i>The Titanic was a ship. It sailed somewhere. It hit an iceberg. We made a visualization to show the breakdown of who died. To see visualization, select "View Visualization"</i></h2>
+    </div>
+
+    <audio src="Music/song.mp3" id="my_audio" loop="loop" autoplay="autoplay"></audio>
+    <audio id="sound1" src="Music/song.mp3" preload="auto"></audio>
+    <button onclick="document.getElementById('sound1').play();">Play
+        it</button>
+
+    <div id="buttons">
+        <a href="visualization.html"><button> View Visualization</button></a>
+    </div>
+    <div id="total"></div>
 
 <script src="js/main.js"></script>
 
 </body>
+
+
 </html>
