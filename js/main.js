@@ -154,7 +154,7 @@ function viewLegend(){
 
     all.append("text")
         .text("Legend")
-        .attr('x', 75)
+        .attr('x', 275)
         .attr('y', 175)
         .style('text-anchor', 'middle')
         .style('fill', 'red')
@@ -169,7 +169,7 @@ function viewLegend(){
         .attr('class', 'legend')
         .attr('transform', function(d, i) {
             var height = 15;
-            var x = 10;
+            var x = 220;
             var y = i * height+200;
             return 'translate(' + x + ',' + y + ')';
         });
