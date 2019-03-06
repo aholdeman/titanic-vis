@@ -1,44 +1,36 @@
 {
   "name": "Passengers",
-  "color": "#FEFB34",
   "size": 891,
   "children": [
     {
       "name": "1st Class",
-      "color": "#1431FF",
       "size": 216,
       "children": [
         {
           "name": "Female",
-          "color": "#1A44FD",
           "size": 94,
           "children": [
             {
               "name": "survived",
-              "size": 91,
-              "color": "#2C7FFA"
+              "size": 91
             },
             {
               "name": "died",
-              "size": 3,
-              "color": "#266CFB"
+              "size": 3
             }
           ]
         },
         {
           "name": "Male",
-          "color": "#2058FC",
           "size": 122,
           "children": [
             {
               "name": "survived",
-              "size": 45,
-              "color": "#3293F9"
+              "size": 45
             },
             {
               "name": "died",
-              "size": 77,
-              "color": "#38A7F8"
+              "size": 77
             }
           ]
         }
@@ -46,40 +38,33 @@
     },
     {
       "name": "2nd Class",
-      "color": "#08A10E",
-      "count": 184,
+      "size": 184,
       "children": [
         {
           "name": "Female",
-          "color": "#0FAB12",
           "size": 76,
           "children": [
             {
               "name": "survived",
-              "size": 70,
-              "color": "#25C91E"
+              "size": 70
             },
             {
               "name": "died",
-              "size": 6,
-              "color": "#1DBF1A"
+              "size": 6
             }
           ]
         },
         {
           "name": "Male",
-          "color": "#16B516",
           "size": 108,
           "children": [
             {
               "name": "survived",
-              "size": 17,
-              "color": "#2CD322"
+              "size": 17
             },
             {
               "name": "died",
-              "size": 91,
-              "color": "#33DD26"
+              "size": 91
             }
           ]
         }
@@ -87,40 +72,33 @@
     },
     {
       "name": "3rd Class",
-      "color": "#FF575F",
       "size": 491,
       "children": [
         {
           "name": "Female",
-          "color": "#FC5E5A",
           "size": 144,
           "children": [
             {
               "name": "survived",
-              "size": 72,
-              "color": "#F4734D"
+              "size": 72
             },
             {
               "name": "died",
-              "size": 72,
-              "color": "#F96556"
+              "size": 72
             }
           ]
         },
         {
           "name": "Male",
-          "color": "#F76C52",
           "size": 347,
           "children": [
             {
               "name": "survived",
-              "size": 47,
-              "color": "#F27A49"
+              "size": 47
             },
             {
               "name": "died",
-              "size": 300,
-              "color": "#EF8145"
+              "size": 300
             }
           ]
         }

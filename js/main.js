@@ -17,6 +17,11 @@ const div = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
+const categors = ["All Passengers", "1st Class", "2nd Class", "3rd Class", "Male", "Female", "died", "survived"]
+const practicecolor = d3.scale.ordinal()
+    .domain(categors)
+    .range(["#ffffe5", "#003EE5", "#bbffff", "#00BFFF", "#3cb371", "#BAE314", "#FFF614", "#fec44f"]);
+
 // format percentages
 const formatNum = d3.format(",.2%");
 
@@ -62,9 +67,7 @@ d3.json("data/titanic-passengers.json", function (data) {
     // adds text and formatting and such to the circle graph
     const path = graph.append("path")
         .attr("d", arc)
-        .style("fill", function (d) {
-            return d.color;
-        })
+        .style("fill", function(d) { return practicecolor(d.name); })
         .style("stroke", "#000")
         .style("stroke-width", "2px")
         .on("click", zoom) //zoom function updates the graph
@@ -82,25 +85,10 @@ d3.json("data/titanic-passengers.json", function (data) {
                 .style("opacity", 0);
         })
 
-    // add labels for each chunk of the graph
-    // TODO: update so it doesn't display if it doesn't fit
-    const text = graph.append("text")
-        .attr("transform", function (d) {
-            return "translate(" + arc.centroid(d) + ")";
-        })
-        .attr("text-anchor", "middle")
-        .attr("dy", ".35em")
-        .text(function (d) {
-            return d.name;
-        })
-        .style("font-size", "16px")
-
-
     // zoom in on the section the user clicks on
     function zoom(d) {
         totalSize = parseInt(d.size); // the new size of the middle piece
         console.log(totalSize);
-        text.transition().attr("opacity", 0); // remove the text while it moves
         // zoom in and see new subsection of graph
         path.transition()
             .duration(750)
@@ -149,3 +137,85 @@ d3.json("data/titanic-passengers.json", function (data) {
 
     }
 });
+
+
+const nah = d3.select("#legend")
+    .append("svg")
+    .attr("width", 500)
+    .attr("height", 500)
+    .append("g")
+
+var legend = nah.append("g")
+    .selectAll("g")
+    .data(practicecolor.domain())
+    .enter()
+    .append('g')
+    .attr('class', 'legend')
+    .attr('transform', function(d, i) {
+        var height = 15;
+        var x = 235;
+        var y = i * height+200;
+        return 'translate(' + x + ',' + y + ')';
+    });
+
+legend.append('rect')
+    .attr('width', 10)
+    .attr('height', 10)
+    .style('fill', practicecolor)
+    .style('stroke', "black");
+
+legend.append('text')
+    .attr('x', 20)
+    .attr('y', 12)
+    .text(function(d) { return d; });
+
+
+
+const all = d3.select("#total")
+    .append("svg")
+    .attr("width", 500)
+    .attr("height", 500)
+    .append("g")
+
+function viewTotals(){
+    var total = ["All Passengers - 891", "1st Class - 216", "2nd Class - 184", "Third Class - 491",  "Male - 577", "Female - 314",  "Died - 549", "Survived - 342"]
+    const allpassengers = d3.scale.ordinal()
+        .domain(total)
+        .range(["#ffffe5", "#003EE5", "#bbffff", "#00BFFF", "#3cb371", "#BAE314", "#FFF614", "#fec44f"]);
+
+
+    all.append("text")
+        .text("Totals")
+        .attr('x', 75)
+        .attr('y', 175)
+        .style('text-anchor', 'middle')
+        .style('fill', 'red')
+        .style('font-size', '20px')
+        .style('font-family', 'sans-serif')
+
+    var totals = all.append("g")
+        .selectAll("g")
+        .data(allpassengers.domain())
+        .enter()
+        .append('g')
+        .attr('class', 'legend')
+        .attr('transform', function(d, i) {
+            var height = 15;
+            var x = 10;
+            var y = i * height+200;
+            return 'translate(' + x + ',' + y + ')';
+        });
+
+    totals.append('rect')
+        .attr('width', 10)
+        .attr('height', 10)
+        .style('fill', allpassengers)
+        .style('stroke', "black");
+
+    totals.append('text')
+        .attr('x', 20)
+        .attr('y', 12)
+        .text(function(d) { return d; })
+        .style('font-family', 'sans-serif');
+
+}
