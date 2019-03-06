@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Titanic Main Page</title>
     <script src="http://d3js.org/d3.v3.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -12,15 +12,16 @@
 <body class = "home">
     <img id="gif" src="resources/titanic.gif" width=" 900" height=" 400" >
     <div class="boxed">
-        <h2><i>The Titanic was a ship. It sailed somewhere. It hit an iceberg. We made a visualization to show the breakdown of who died. To see visualization, select "View Visualization"</i></h2>
+        <h2><i>The Titanic was a ship. In 1912, it took off on its maiden voyage to New York. <br/> Surprise! It hit an iceberg.<br/>We made a visualization to show the breakdown of who died. To see visualization, select "View Visualization""</i></h2>
     </div>
 
     <audio src="resources/titanic-recorder.mp3" id="my_audio" loop="loop" autoplay="autoplay"></audio>
     <audio id="sound1" src="resources/titanic-recorder.mp3" preload="auto"></audio>
-    <button onclick="document.getElementById('sound1').play();">Play
-        it</button>
+
 
     <div id="buttons">
+        <button onclick="document.getElementById('sound1').play();">Play
+            it</button>
         <a href="visualization.html"><button> View Visualization</button></a>
     </div>
 
