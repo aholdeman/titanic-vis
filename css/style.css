@@ -11,6 +11,7 @@ div.tooltip {
 .boxed {
     border: 3px solid black;
     background-color: cornflowerblue;
+    text-align: center;
 }
 
 body {
